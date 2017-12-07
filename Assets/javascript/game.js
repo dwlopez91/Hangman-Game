@@ -18,24 +18,19 @@
 
    var guessesLeft = 9;
 
+   var userGuess = [];
 
+
+	var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+		 console.log(computerGuess);
 
 	document.onkeyup = function(event) {
 		
 
- 
 // set IDs to wins, losses, guesses left, and guesses so far 
 		
-		var userGuess = event.key; 
-	
-	// this should show the string of letters that have been guessed so far	
-	//function guessesSoFar() {
-        //document.querySelector("#guessesSoFar").innerHTML = "Guesses so Far: " + text;
+		 userGuess = event.key; 
 		 
-
-		 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-		 console.log(computerGuess)
-
 
 		if (userGuess === computerGuess) {
 		 	 wins ++;
@@ -46,33 +41,24 @@
 			guessesLeft--;
 		}
 
-		if (guessesLeft < 0) {
+		if (guessesLeft === 0) {
 			losses++;
+			guessesLeft = 9;
 		}
 
-// inner HTML is needed
-
-		
-// create a for loop to only allow 9 guesses
 
 		function updateGuess() {
         document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guessesLeft;
-        
-        for (var i = 0; i > 9; i++) {
-        	losses++;
+        document.querySelector("#losses").innerHTML = "Losses: " + losses;
+        document.querySelector("#wins").innerHTML = "Wins: " + wins;
+        document.querySelector("#guessesSoFar").innerHTML = "Your Guesses: " + userGuess;
 		
 }	
+		updateGuess()
+
+}
 		
 
-}
-		updateGuess()
-}
 
-	
-
-//losses should increase after Guesses left reaches 0 
-// wins should increase when user guess = comp guess
-//should create a function to reset the game once player loses or wins	
-// your guesses so far and guesses left need to clear after wins or losses goes up by 1
 
 	
